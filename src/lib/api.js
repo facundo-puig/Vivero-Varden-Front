@@ -70,7 +70,7 @@ async function detalle(path, id) {
     return res.json();
 }
 
-export const getCategorias = () => list(ENDPOINTS.categorias);
+export const getCategorias = cache(() => list(ENDPOINTS.categorias));
 export const getEtiquetas = () => list(ENDPOINTS.etiquetas);
 export const getEspecies = () => list(ENDPOINTS.especies);
 export const getProveedores = () => list(ENDPOINTS.proveedores);

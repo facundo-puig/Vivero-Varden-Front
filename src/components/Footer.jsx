@@ -1,10 +1,11 @@
 import Link from "next/link";
-import { CATEGORIAS } from "@/lib/categorias";
+import { getCategorias } from "@/lib/api";
 
-// constante para cambiar número de whatsapp
 const NUMERO_WHATSAPP = "5493580000000";
 
-export default function Footer() {
+export default async function Footer() {
+    const categorias = await getCategorias().catch(() => []);
+
     return (
         <footer className="border-t border-borde bg-brote/40">
             <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 md:grid-cols-2 lg:grid-cols-4">
@@ -23,13 +24,13 @@ export default function Footer() {
                         Colecciones
                     </h3>
                     <ul className="mt-3 space-y-2 text-sm text-tinta-suave">
-                        {CATEGORIAS.map((categoria) => (
-                            <li key={categoria}>
+                        {categorias.map((categoria) => (
+                            <li key={categoria.id}>
                                 <Link
-                                    href={`/productos?categoria=${encodeURIComponent(categoria)}`}
+                                    href={`/productos?categoria=${categoria.id}`}
                                     className="hover:text-hoja hover:underline"
                                 >
-                                    {categoria}
+                                    {categoria.nombre}
                                 </Link>
                             </li>
                         ))}
