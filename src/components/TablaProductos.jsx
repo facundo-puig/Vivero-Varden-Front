@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Pencil } from "lucide-react";
+import { eliminarProducto } from "@/app/actions";
 import { formatearPrecio } from "@/lib/productos";
 import BotonEliminar from "@/components/BotonEliminar";
 
@@ -39,7 +40,11 @@ export default function TablaProductos({ productos }) {
                                         <Pencil size={16} />
                                         Editar
                                     </Link>
-                                    <BotonEliminar id={producto.id} nombre={producto.nombre} />
+                                    <BotonEliminar
+                                        id={producto.id}
+                                        nombre={producto.nombre}
+                                        accion={eliminarProducto}
+                                    />
                                 </div>
                             </td>
                         </tr>

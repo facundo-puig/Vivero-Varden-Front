@@ -2,9 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { eliminarProducto } from "@/app/actions";
 
-export default function BotonEliminar({ id, nombre }) {
+export default function BotonEliminar({ id, nombre, accion }) {
     const router = useRouter();
     const [paso, setPaso] = useState("inicio");
     const [error, setError] = useState("");
@@ -12,7 +11,7 @@ export default function BotonEliminar({ id, nombre }) {
     async function borrar() {
         setPaso("borrando");
         setError("");
-        const resultado = await eliminarProducto(id);
+        const resultado = await accion(id);
         if (resultado?.error) {
             setError(resultado.error);
             setPaso("inicio");
