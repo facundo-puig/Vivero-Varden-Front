@@ -1,8 +1,12 @@
 import Link from "next/link";
-import { Search, ShoppingBag, User } from "lucide-react";
+import { LayoutDashboard, LogOut, Search, User } from "lucide-react";
+import { getPerfil } from "@/lib/api";
+import { logout } from "@/app/actions";
 import { CATEGORIAS } from "@/lib/categorias";
 
-export default function Navbar() {
+export default async function Navbar() {
+    const perfil = await getPerfil();
+
     return (
         <header className="border-b border-borde bg-crema">
             <div className="mx-auto max-w-7xl px-4">
@@ -28,20 +32,36 @@ export default function Navbar() {
                     </form>
 
                     <div className="ml-auto flex items-center gap-4 md:ml-0">
-                        <Link
-                            href="/login"
-                            className="flex items-center gap-2 text-sm font-medium text-tinta hover:text-hoja"
-                        >
-                            <User size={20} />
-                            <span className="hidden sm:inline">Ingresar / Mi Cuenta</span>
-                        </Link>
-                        <Link
-                            href="/carrito"
-                            className="flex items-center gap-2 rounded-lg bg-tierra px-4 py-2 text-sm font-medium text-white hover:bg-tierra-oscuro"
-                        >
-                            <ShoppingBag size={18} />
-                            Carrito
-                        </Link>
+                        {perfil ? (
+                            <>
+                                {perfil.is_staff && (
+                                    <Link
+                                        href="/dashboard"
+                                        className="flex items-center gap-2 rounded-lg bg-tierra px-4 py-2 text-sm font-medium text-white hover:bg-tierra-oscuro"
+                                    >
+                                        <LayoutDashboard size={18} />
+                                        Panel
+                                    </Link>
+                                )}
+                                <form action={logout}>
+                                    <button
+                                        type="submit"
+                                        className="flex items-center gap-2 text-sm font-medium text-tinta hover:text-hoja"
+                                    >
+                                        <LogOut size={20} />
+                                        <span className="hidden sm:inline">Cerrar sesión</span>
+                                    </button>
+                                </form>
+                            </>
+                        ) : (
+                            <Link
+                                href="/login"
+                                className="flex items-center gap-2 rounded-lg bg-tierra px-4 py-2 text-sm font-medium text-white hover:bg-tierra-oscuro"
+                            >
+                                <User size={18} />
+                                Ingresar
+                            </Link>
+                        )}
                     </div>
                 </div>
 
