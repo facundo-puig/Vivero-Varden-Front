@@ -1,8 +1,86 @@
+import Link from "next/link";
+import { CATEGORIAS } from "@/lib/categorias";
+
+// constante para cambiar número de whatsapp
+const NUMERO_WHATSAPP = "5493580000000";
+
 export default function Footer() {
     return (
-        <footer className="border-t border-green-200 bg-white">
-            <div className="mx-auto max-w-6xl px-4 py-6 text-center text-sm text-gray-500">
-                &copy; {new Date().getFullYear()} Vivero Varden
+        <footer className="border-t border-borde bg-brote/40">
+            <div className="mx-auto grid max-w-7xl gap-8 px-4 py-10 md:grid-cols-2 lg:grid-cols-4">
+                <div>
+                    <p className="font-titulos text-2xl font-semibold text-hoja-oscuro">
+                        Vivero Varden
+                    </p>
+                    <p className="mt-3 text-sm text-tinta-suave">
+                        Vivero dedicado a la selección de plantas, árboles, macetas y todo
+                        lo necesario para tu jardín.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 className="text-sm font-semibold text-hoja-oscuro">
+                        Colecciones
+                    </h3>
+                    <ul className="mt-3 space-y-2 text-sm text-tinta-suave">
+                        {CATEGORIAS.map((categoria) => (
+                            <li key={categoria}>
+                                <Link
+                                    href={`/productos?categoria=${encodeURIComponent(categoria)}`}
+                                    className="hover:text-hoja hover:underline"
+                                >
+                                    {categoria}
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 className="text-sm font-semibold text-hoja-oscuro">Atención</h3>
+                    <ul className="mt-3 space-y-2 text-sm text-tinta-suave">
+                        <li>
+                            <Link
+                                href="/preguntas-frecuentes"
+                                className="hover:text-hoja hover:underline"
+                            >
+                                Preguntas frecuentes
+                            </Link>
+                        </li>
+                        <li>
+                            <Link
+                                href="/terminos-y-condiciones"
+                                className="hover:text-hoja hover:underline"
+                            >
+                                Términos y Condiciones
+                            </Link>
+                        </li>
+                        <li>
+                            <a
+                                href={`https://wa.me/${NUMERO_WHATSAPP}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-hoja hover:underline"
+                            >
+                                WhatsApp
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 className="text-sm font-semibold text-hoja-oscuro">Visitanos</h3>
+                    <p className="mt-3 text-sm text-tinta-suave">Av. Alvear y Ecuador, Río Cuarto, Córdoba</p>
+                    <p className="text-sm text-tinta-suave">
+                        Martes a domingos: 10:00 a 19:00 hs
+                    </p>
+                </div>
+            </div>
+
+            <div className="border-t border-borde">
+                <p className="mx-auto max-w-7xl px-4 py-4 text-sm text-tinta-suave">
+                    © {new Date().getFullYear()} Vivero Varden. Río Cuarto, Córdoba.
+                </p>
             </div>
         </footer>
     );
