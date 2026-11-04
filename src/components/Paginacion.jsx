@@ -4,7 +4,15 @@ export default function Paginacion({ paginaActual, totalPaginas, ruta, parametro
     if (totalPaginas <= 1) return null;
 
     function armarHref(numero) {
-        const params = new URLSearchParams({ ...parametros, page: numero });
+        const params = new URLSearchParams();
+        for (const [clave, valor] of Object.entries(parametros)) {
+            if (Array.isArray(valor)) {
+                valor.forEach((item) => params.append(clave, item));
+            } else if (valor) {
+                params.set(clave, valor);
+            }
+        }
+        params.set("page", numero);
         return `${ruta}?${params}`;
     }
 

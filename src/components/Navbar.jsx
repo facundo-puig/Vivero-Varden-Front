@@ -1,11 +1,14 @@
 import Link from "next/link";
 import { LayoutDashboard, LogOut, Search, User } from "lucide-react";
-import { getPerfil } from "@/lib/api";
+import { getCategorias, getPerfil } from "@/lib/api";
 import { logout } from "@/app/actions";
-import { CATEGORIAS } from "@/lib/categorias";
 
 export default async function Navbar() {
-    const perfil = await getPerfil();
+    // Si la API no responde, el navbar igual se muestra (sin categorías)
+    const [perfil, categorias] = await Promise.all([
+        getPerfil(),
+        getCategorias().catch(() => []),
+    ]);
 
     return (
         <header className="border-b border-borde bg-crema">
@@ -66,13 +69,13 @@ export default async function Navbar() {
                 </div>
 
                 <nav className="flex gap-6 overflow-x-auto pb-3 text-sm font-medium text-hoja">
-                    {CATEGORIAS.map((categoria) => (
+                    {categorias.map((categoria) => (
                         <Link
-                            key={categoria}
-                            href={`/productos?categoria=${encodeURIComponent(categoria)}`}
+                            key={categoria.id}
+                            href={`/productos?categoria=${categoria.id}`}
                             className="whitespace-nowrap hover:text-hoja-oscuro hover:underline"
                         >
-                            {categoria}
+                            {categoria.nombre}
                         </Link>
                     ))}
                 </nav>
