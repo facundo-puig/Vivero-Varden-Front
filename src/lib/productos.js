@@ -1,16 +1,35 @@
+// Igual que PAGE_SIZE de REST_FRAMEWORK en el back
 export const TAMANO_PAGINA = 10;
 
+// Producto.tamano (array porque lo usan los selects)
 export const TAMANOS = [
     { valor: "chica", etiqueta: "Chica" },
     { valor: "mediana", etiqueta: "Mediana" },
     { valor: "grande", etiqueta: "Grande" },
 ];
 
+// Etiqueta.grupo
 export const GRUPOS_ETIQUETA = {
     ubicacion: "Ubicación",
     clima: "Clima",
     tipo_planta: "Tipo de planta",
     uso: "Uso",
+};
+
+// GuiaCuidado.luz
+export const LUZ = {
+    poca_luz: "Poca luz",
+    sombra: "Sombra",
+    media_sombra: "Media sombra",
+    pleno_sol: "Pleno sol",
+};
+
+// Especie.tipo_propagacion
+export const PROPAGACION = {
+    semilla: "Semilla",
+    esqueje: "Esqueje",
+    gajo: "Gajo",
+    division: "División",
 };
 
 export function formatearPrecio(valor) {

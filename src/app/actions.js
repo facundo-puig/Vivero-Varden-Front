@@ -78,3 +78,21 @@ export async function eliminarProducto(id) {
     revalidatePath("/productos");
     return {};
 }
+
+export async function crearComentario(datos) {
+    const res = await llamar(ENDPOINTS.comentarios, { method: "POST", body: JSON.stringify(datos) });
+    if (!res) return { error: "No se pudo conectar con la API." };
+    if (res.status === 401 || res.status === 403) return { error: "Tu sesión venció. Vuelve a iniciar sesión." };
+    if (!res.ok) return { error: "No se pudo publicar el comentario." };
+    revalidatePath("/productos/[id]", "page");
+    return {};
+}
+
+export async function borrarComentario(id) {
+    const res = await llamar(`${ENDPOINTS.comentarios}${id}/`, { method: "DELETE" });
+    if (!res) return { error: "Sin conexión con la API." };
+    if (res.status === 401 || res.status === 403) return { error: "Sesión vencida o sin permiso." };
+    if (!res.ok && res.status !== 404) return { error: "No se pudo borrar." };
+    revalidatePath("/productos/[id]", "page");
+    return {};
+}
