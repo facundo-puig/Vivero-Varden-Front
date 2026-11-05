@@ -89,3 +89,5 @@ export function armarPayloadProducto(datos) {
         etiquetas: datos.etiquetas.map(Number),
     };
 }
+
+export const NUMERO_WHATSAPP = "5493580000000";

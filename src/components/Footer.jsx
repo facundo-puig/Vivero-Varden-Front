@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { getCategorias } from "@/lib/api";
 
-const NUMERO_WHATSAPP = "5493580000000";
+import { NUMERO_WHATSAPP } from "@/lib/productos";
 
 export default async function Footer() {
     const categorias = await getCategorias().catch(() => []);
