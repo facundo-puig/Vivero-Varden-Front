@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { getOpcionesProducto, getProducto } from "@/lib/api";
-import FormularioProducto from "@/components/FormularioProducto";
+import FormularioProducto from "@/components/dashboard/FormularioProducto";
 
 export const metadata = { title: "Editar producto | Panel" };
 

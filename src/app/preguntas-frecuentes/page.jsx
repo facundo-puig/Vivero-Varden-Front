@@ -1,4 +1,4 @@
-import PaginaTexto from "@/components/PaginaTexto";
+import PaginaTexto from "@/components/ui/PaginaTexto";
 
 export const metadata = { title: "Preguntas frecuentes | Vivero Varden" };
 

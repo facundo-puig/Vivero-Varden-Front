@@ -1,7 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
-import EstadoVacio from "@/components/EstadoVacio";
-import BotonTema from "@/components/BotonTema";
+import EstadoVacio from "@/components/ui/EstadoVacio";
+import BotonTema from "@/components/layout/BotonTema";
 import { TemaProvider } from "@/context/TemaContext";
 
 describe("EstadoVacio", () => {

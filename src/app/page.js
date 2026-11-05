@@ -1,9 +1,9 @@
 import Link from "next/link";
 import { ArrowRight, BookOpen, MessageCircle, Sprout } from "lucide-react";
 import { getCategorias, getProductosPagina } from "@/lib/api";
-import TarjetaCategoria from "@/components/TarjetaCategoria";
-import TarjetaProducto from "@/components/TarjetaProducto";
-import EstadoVacio from "@/components/EstadoVacio";
+import TarjetaCategoria from "@/components/inicio/TarjetaCategoria";
+import TarjetaProducto from "@/components/productos/TarjetaProducto";
+import EstadoVacio from "@/components/ui/EstadoVacio";
 
 const BENEFICIOS = [
   {

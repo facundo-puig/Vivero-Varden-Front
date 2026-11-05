@@ -2,7 +2,7 @@ import Link from "next/link";
 import { LayoutDashboard, LogOut, Search, User } from "lucide-react";
 import { getCategorias, getPerfil } from "@/lib/api";
 import { logout } from "@/app/actions";
-import BotonTema from "@/components/BotonTema";
+import BotonTema from "@/components/layout/BotonTema";
 
 export default async function Navbar() {
     // Si la API no responde, el navbar igual se muestra (sin categorías)

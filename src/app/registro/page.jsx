@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { getToken } from "@/lib/auth";
-import FormularioRegistro from "@/components/FormularioRegistro";
+import FormularioRegistro from "@/components/auth/FormularioRegistro";
 
 export const metadata = { title: "Crear cuenta | Vivero Varden" };
 
