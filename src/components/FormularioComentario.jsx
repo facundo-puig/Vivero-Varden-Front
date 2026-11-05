@@ -50,7 +50,7 @@ export default function FormularioComentario({ productoId }) {
                 <textarea
                     rows={3}
                     {...register("texto")}
-                    className="mt-1 w-full rounded-lg border border-borde bg-white px-3 py-2 text-sm outline-none focus:border-hoja"
+                    className="mt-1 w-full rounded-lg border border-borde bg-superficie px-3 py-2 text-sm outline-none focus:border-hoja"
                 />
             </label>
             {errors.texto && <p className="text-sm text-error">{errors.texto.message}</p>}

@@ -10,7 +10,7 @@ const ORDENES = [
 ];
 
 const claseCampo =
-    "mt-1 w-full rounded-lg border border-borde bg-white px-3 py-2 text-sm outline-none focus:border-hoja";
+    "mt-1 w-full rounded-lg border border-borde bg-superficie px-3 py-2 text-sm outline-none focus:border-hoja";
 
 export default function FiltrosProductos({ filtros, categorias, etiquetas }) {
     // Agrupa las etiquetas por su grupo (ubicación, clima, etc.)
@@ -22,7 +22,7 @@ export default function FiltrosProductos({ filtros, categorias, etiquetas }) {
     return (
         <form
             action="/productos"
-            className="space-y-5 rounded-xl border border-borde bg-white p-5"
+            className="space-y-5 rounded-xl border border-borde bg-superficie p-5"
         >
             <label className="block text-sm font-medium">
                 Buscar

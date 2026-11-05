@@ -44,9 +44,9 @@ export default function PaginaPreguntasFrecuentes() {
                 {PREGUNTAS.map((item) => (
                     <details
                         key={item.pregunta}
-                        className="rounded-xl border border-borde bg-white p-4"
+                        className="rounded-xl border border-borde bg-superficie p-4"
                     >
-                        <summary className="cursor-pointer font-medium text-hoja-oscuro">
+                        <summary className="cursor-pointer font-medium text-titulo">
                             {item.pregunta}
                         </summary>
                         <p className="mt-3 text-sm text-tinta-suave">{item.respuesta}</p>

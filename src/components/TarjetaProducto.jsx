@@ -6,7 +6,7 @@ export default function TarjetaProducto({ producto }) {
     return (
         <Link
             href={`/productos/${producto.id}`}
-            className="flex flex-col overflow-hidden rounded-xl border border-borde bg-white transition hover:border-hoja hover:shadow-md"
+            className="flex flex-col overflow-hidden rounded-xl border border-borde bg-superficie transition hover:border-hoja hover:shadow-md"
         >
             {producto.imagen ? (
                 <img
@@ -16,7 +16,7 @@ export default function TarjetaProducto({ producto }) {
                     className="h-48 w-full object-cover"
                 />
             ) : (
-                <div className="flex h-48 items-center justify-center bg-brote text-hoja">
+                <div className="flex h-48 items-center justify-center bg-brote text-enlace">
                     <Sprout size={48} />
                 </div>
             )}
@@ -25,7 +25,7 @@ export default function TarjetaProducto({ producto }) {
                 <p className="text-xs font-semibold uppercase text-tierra">
                     {producto.categoria?.nombre}
                 </p>
-                <h3 className="mt-1 font-titulos text-lg font-semibold text-hoja-oscuro">
+                <h3 className="mt-1 font-titulos text-lg font-semibold text-titulo">
                     {producto.nombre}
                 </h3>
                 <p className="mt-1 line-clamp-2 text-sm text-tinta-suave">
@@ -36,7 +36,7 @@ export default function TarjetaProducto({ producto }) {
                     {producto.etiquetas.slice(0, 3).map((etiqueta) => (
                         <span
                             key={etiqueta.id}
-                            className="rounded-full bg-brote px-2 py-0.5 text-xs text-hoja-oscuro"
+                            className="rounded-full bg-brote px-2 py-0.5 text-xs text-titulo"
                         >
                             {etiqueta.nombre}
                         </span>

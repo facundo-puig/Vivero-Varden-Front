@@ -48,7 +48,7 @@ export default async function PaginaInicio() {
           <p className="text-xs font-semibold uppercase tracking-wide text-tierra">
             Vivero Varden
           </p>
-          <h1 className="mt-3 font-titulos text-4xl font-semibold leading-tight text-hoja-oscuro md:text-5xl">
+          <h1 className="mt-3 font-titulos text-4xl font-semibold leading-tight text-titulo md:text-5xl">
             Llená tus espacios de vida natural
           </h1>
           <p className="mt-4 max-w-md text-tinta-suave">
@@ -66,7 +66,7 @@ export default async function PaginaInicio() {
             </Link>
             <Link
               href="#categorias"
-              className="rounded-lg border border-hoja px-5 py-2.5 text-sm font-medium text-hoja hover:bg-white"
+              className="rounded-lg border border-hoja px-5 py-2.5 text-sm font-medium text-enlace hover:bg-superficie"
             >
               Explorar categorías
             </Link>
@@ -77,7 +77,7 @@ export default async function PaginaInicio() {
       {/* Categorías */}
       {categorias?.length > 0 && (
         <section id="categorias" className="scroll-mt-8">
-          <h2 className="font-titulos text-2xl font-semibold text-hoja-oscuro">
+          <h2 className="font-titulos text-2xl font-semibold text-titulo">
             Explorá nuestro catálogo
           </h2>
           <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
@@ -91,11 +91,11 @@ export default async function PaginaInicio() {
       {/* Beneficios */}
       <section className="grid gap-4 md:grid-cols-3">
         {BENEFICIOS.map(({ icono: Icono, titulo, texto }) => (
-          <div key={titulo} className="rounded-xl border border-borde bg-white p-6">
-            <span className="flex size-11 items-center justify-center rounded-lg bg-brote text-hoja">
+          <div key={titulo} className="rounded-xl border border-borde bg-superficie p-6">
+            <span className="flex size-11 items-center justify-center rounded-lg bg-brote text-enlace">
               <Icono size={22} />
             </span>
-            <h3 className="mt-4 font-titulos text-lg font-semibold text-hoja-oscuro">
+            <h3 className="mt-4 font-titulos text-lg font-semibold text-titulo">
               {titulo}
             </h3>
             <p className="mt-2 text-sm text-tinta-suave">{texto}</p>
@@ -106,12 +106,12 @@ export default async function PaginaInicio() {
       {/* Productos destacados */}
       <section>
         <div className="flex items-end justify-between gap-4">
-          <h2 className="font-titulos text-2xl font-semibold text-hoja-oscuro">
+          <h2 className="font-titulos text-2xl font-semibold text-titulo">
             Productos destacados
           </h2>
           <Link
             href="/productos"
-            className="flex items-center gap-1 text-sm font-medium text-hoja hover:underline"
+            className="flex items-center gap-1 text-sm font-medium text-enlace hover:underline"
           >
             Ver todo el catálogo
             <ArrowRight size={16} />

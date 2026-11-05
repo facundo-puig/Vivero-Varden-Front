@@ -23,3 +23,25 @@ body {
   color: var(--color-tinta);
   font-family: var(--font-texto);
 }
+
+/* Modo oscuro: se activa cuando <html> tiene la clase "dark" */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Colores nuevos que cambian según el tema */
+@theme {
+  --color-superficie: #ffffff;
+  --color-titulo: #1f4a2b;
+  --color-enlace: #2f6b3f;
+}
+
+.dark {
+  color-scheme: dark;
+  --color-crema: #121a15;
+  --color-superficie: #1b261f;
+  --color-brote: #223428;
+  --color-borde: #2e3f33;
+  --color-tinta: #e8efe9;
+  --color-tinta-suave: #a3b2a7;
+  --color-titulo: #cfe5d3;
+  --color-enlace: #7dbe8f;
+}

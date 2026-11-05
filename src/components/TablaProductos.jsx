@@ -6,7 +6,7 @@ import BotonEliminar from "@/components/BotonEliminar";
 
 export default function TablaProductos({ productos }) {
     return (
-        <div className="overflow-x-auto rounded-xl border border-borde bg-white">
+        <div className="overflow-x-auto rounded-xl border border-borde bg-superficie">
             <table className="w-full text-left text-sm">
                 <thead className="bg-brote/60 text-xs uppercase text-tinta-suave">
                     <tr>
@@ -35,7 +35,7 @@ export default function TablaProductos({ productos }) {
                                 <div className="flex items-start gap-4">
                                     <Link
                                         href={`/dashboard/productos/${producto.id}/editar`}
-                                        className="flex items-center gap-1 text-sm font-medium text-hoja hover:underline"
+                                        className="flex items-center gap-1 text-sm font-medium text-enlace hover:underline"
                                     >
                                         <Pencil size={16} />
                                         Editar

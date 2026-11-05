@@ -40,7 +40,7 @@ export default async function PaginaDetalleProducto({ params }) {
         <section>
             <Link
                 href="/productos"
-                className="mb-6 inline-flex items-center gap-1 text-sm text-hoja hover:underline"
+                className="mb-6 inline-flex items-center gap-1 text-sm text-enlace hover:underline"
             >
                 <ArrowLeft size={16} />
                 Volver al catálogo
@@ -54,14 +54,14 @@ export default async function PaginaDetalleProducto({ params }) {
                         className="h-80 w-full rounded-xl object-cover md:h-full"
                     />
                 ) : (
-                    <div className="flex h-80 items-center justify-center rounded-xl bg-brote text-hoja md:h-full">
+                    <div className="flex h-80 items-center justify-center rounded-xl bg-brote text-enlace md:h-full">
                         <Sprout size={80} />
                     </div>
                 )}
 
                 <div>
                     <p className="text-xs font-semibold uppercase text-tierra">{categoria?.nombre}</p>
-                    <h1 className="mt-1 font-titulos text-3xl font-semibold text-hoja-oscuro">
+                    <h1 className="mt-1 font-titulos text-3xl font-semibold text-titulo">
                         {producto.nombre}
                     </h1>
                     <p className="mt-3 font-titulos text-3xl">{formatearPrecio(producto.precio)}</p>
@@ -77,7 +77,7 @@ export default async function PaginaDetalleProducto({ params }) {
                             {etiquetasProducto.map((etiqueta) => (
                                 <span
                                     key={etiqueta.id}
-                                    className="rounded-full bg-brote px-3 py-1 text-xs text-hoja-oscuro"
+                                    className="rounded-full bg-brote px-3 py-1 text-xs text-titulo"
                                 >
                                     {etiqueta.nombre}
                                 </span>
@@ -96,16 +96,16 @@ export default async function PaginaDetalleProducto({ params }) {
             )}
 
             <section className="mt-10">
-                <h2 className="font-titulos text-2xl font-semibold text-hoja-oscuro">
+                <h2 className="font-titulos text-2xl font-semibold text-titulo">
                     Comentarios ({comentarios.length})
                 </h2>
 
-                <div className="mt-4 rounded-xl border border-borde bg-white p-5">
+                <div className="mt-4 rounded-xl border border-borde bg-superficie p-5">
                     {perfil ? (
                         <FormularioComentario productoId={producto.id} />
                     ) : (
                         <p className="text-sm text-tinta-suave">
-                            <Link href="/login" className="font-medium text-hoja hover:underline">
+                            <Link href="/login" className="font-medium text-enlace hover:underline">
                                 Iniciá sesión
                             </Link>{" "}
                             para dejar un comentario.
