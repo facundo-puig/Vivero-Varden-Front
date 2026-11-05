@@ -3,9 +3,9 @@ import { notFound, redirect } from "next/navigation";
 import { Plus } from "lucide-react";
 import { getProductosPagina } from "@/lib/api";
 import { TAMANO_PAGINA } from "@/lib/productos";
-import TablaProductos from "@/components/TablaProductos";
-import Paginacion from "@/components/Paginacion";
-import EstadoVacio from "@/components/EstadoVacio";
+import TablaProductos from "@/components/dashboard/TablaProductos";
+import Paginacion from "@/components/ui/Paginacion";
+import EstadoVacio from "@/components/ui/EstadoVacio";
 
 export const metadata = { title: "Productos | Panel" };
 

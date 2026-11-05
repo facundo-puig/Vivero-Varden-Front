@@ -10,10 +10,10 @@ import {
     getProducto,
 } from "@/lib/api";
 import { TAMANOS, formatearPrecio } from "@/lib/productos";
-import CuidadosEspecie from "@/components/CuidadosEspecie";
-import FormularioComentario from "@/components/FormularioComentario";
-import ListaComentarios from "@/components/ListaComentarios";
-import BotonWhatsapp from "@/components/BotonWhatsapp";
+import CuidadosEspecie from "@/components/productos/CuidadosEspecie";
+import FormularioComentario from "@/components/productos/FormularioComentario";
+import ListaComentarios from "@/components/productos/ListaComentarios";
+import BotonWhatsapp from "@/components/productos/BotonWhatsapp";
 
 export const metadata = { title: "Producto | Vivero Varden" };
 

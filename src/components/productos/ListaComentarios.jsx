@@ -1,6 +1,6 @@
 import { borrarComentario } from "@/app/actions";
-import BotonEliminar from "@/components/BotonEliminar";
-import EstadoVacio from "@/components/EstadoVacio";
+import BotonEliminar from "@/components/ui/BotonEliminar";
+import EstadoVacio from "@/components/ui/EstadoVacio";
 
 export default function ListaComentarios({ comentarios, perfil }) {
     if (comentarios.length === 0) {

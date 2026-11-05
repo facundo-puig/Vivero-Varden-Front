@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { getToken } from "@/lib/auth";
-import FormularioLogin from "@/components/FormularioLogin";
+import FormularioLogin from "@/components/auth/FormularioLogin";
 
 export const metadata = { title: "Ingresar | Vivero Varden" };
 

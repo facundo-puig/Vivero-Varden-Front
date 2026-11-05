@@ -1,10 +1,10 @@
 import { notFound } from "next/navigation";
 import { getCategorias, getEtiquetas, getProductosPagina } from "@/lib/api";
 import { TAMANO_PAGINA } from "@/lib/productos";
-import FiltrosProductos from "@/components/FiltrosProductos";
-import TarjetaProducto from "@/components/TarjetaProducto";
-import Paginacion from "@/components/Paginacion";
-import EstadoVacio from "@/components/EstadoVacio";
+import FiltrosProductos from "@/components/productos/FiltrosProductos";
+import TarjetaProducto from "@/components/productos/TarjetaProducto";
+import Paginacion from "@/components/ui/Paginacion";
+import EstadoVacio from "@/components/ui/EstadoVacio";
 
 export const metadata = { title: "Catálogo | Vivero Varden" };
 

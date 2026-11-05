@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Pencil } from "lucide-react";
 import { eliminarProducto } from "@/app/actions";
 import { formatearPrecio } from "@/lib/productos";
-import BotonEliminar from "@/components/BotonEliminar";
+import BotonEliminar from "@/components/ui/BotonEliminar";
 
 export default function TablaProductos({ productos }) {
     return (
