@@ -15,8 +15,8 @@ export default function CuidadosEspecie({ especie }) {
     const hayTemperatura = guia?.temperatura_min != null && guia?.temperatura_max != null;
 
     return (
-        <section className="rounded-xl border border-borde bg-white p-5">
-            <h2 className="font-titulos text-xl font-semibold text-hoja-oscuro">
+        <section className="rounded-xl border border-borde bg-superficie p-5">
+            <h2 className="font-titulos text-xl font-semibold text-titulo">
                 {especie.nombre_comun}
             </h2>
             <p className="text-sm italic text-tinta-suave">{especie.nombre_cientifico}</p>
@@ -31,7 +31,7 @@ export default function CuidadosEspecie({ especie }) {
 
             {guia && (
                 <>
-                    <h3 className="mt-5 text-sm font-semibold text-hoja-oscuro">Cuidados</h3>
+                    <h3 className="mt-5 text-sm font-semibold text-titulo">Cuidados</h3>
                     <dl className="mt-2 grid gap-3 sm:grid-cols-2">
                         <Dato etiqueta="Riego" valor={guia.riego} />
                         <Dato etiqueta="Luz" valor={LUZ[guia.luz]} />

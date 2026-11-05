@@ -14,7 +14,7 @@ import {
 import { crearProducto, editarProducto } from "@/app/actions";
 
 const claseCampo =
-    "mt-1 w-full rounded-lg border border-borde bg-white px-3 py-2 text-sm outline-none focus:border-hoja";
+    "mt-1 w-full rounded-lg border border-borde bg-superficie px-3 py-2 text-sm outline-none focus:border-hoja";
 
 function Campo({ etiqueta, error, children }) {
     return (
@@ -72,7 +72,7 @@ export default function FormularioProducto({
     return (
         <form
             onSubmit={handleSubmit(alEnviar)}
-            className="space-y-5 rounded-xl border border-borde bg-white p-6"
+            className="space-y-5 rounded-xl border border-borde bg-superficie p-6"
             noValidate
         >
             {errorGeneral && (

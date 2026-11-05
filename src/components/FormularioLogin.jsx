@@ -21,10 +21,10 @@ export default function FormularioLogin() {
     return (
         <form
             onSubmit={handleSubmit(alEnviar)}
-            className="mx-auto w-full max-w-sm space-y-4 rounded-xl border border-borde bg-white p-6 shadow-sm"
+            className="mx-auto w-full max-w-sm space-y-4 rounded-xl border border-borde bg-superficie p-6 shadow-sm"
             noValidate
         >
-            <h1 className="font-titulos text-2xl font-semibold text-hoja-oscuro">
+            <h1 className="font-titulos text-2xl font-semibold text-titulo">
                 Ingresar
             </h1>
 

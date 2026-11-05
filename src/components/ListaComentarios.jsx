@@ -22,11 +22,11 @@ export default function ListaComentarios({ comentarios, perfil }) {
                 return (
                     <li
                         key={comentario.id}
-                        className="rounded-xl border border-borde bg-white p-4"
+                        className="rounded-xl border border-borde bg-superficie p-4"
                     >
                         <div className="flex items-start justify-between gap-4">
                             <div>
-                                <p className="text-sm font-semibold text-hoja-oscuro">
+                                <p className="text-sm font-semibold text-titulo">
                                     {comentario.autor}
                                 </p>
                                 <p className="text-xs text-tinta-suave">
