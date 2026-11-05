@@ -32,6 +32,31 @@ export async function login(_estadoPrevio, datos) {
     redirect("/");
 }
 
+export async function registro(_estadoPrevio, datos) {
+    // No se manda "confirmar" ni los campos opcionales vacíos
+    const { confirmar, ...resto } = datos;
+    const cuerpo = Object.fromEntries(
+        Object.entries(resto).filter(([, valor]) => valor !== "")
+    );
+
+    const res = await fetch(`${API_URL}${ENDPOINTS.registro}`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(cuerpo),
+        cache: "no-store",
+    }).catch(() => null);
+
+    if (!res) return { error: "No se pudo conectar con la API. Si estaba dormida, prueba de nuevo en unos segundos." };
+    if (!res.ok) {
+        // La API devuelve los errores por campo: { username: ["..."], password: ["..."] }
+        const errores = await res.json().catch(() => ({}));
+        const mensajes = Object.values(errores).flat().join(" ");
+        return { error: mensajes || "No se pudo crear la cuenta. Revisa los datos." };
+    }
+
+    redirect("/login");
+}
+
 export async function logout() {
     (await cookies()).delete("access");
     redirect("/login");
