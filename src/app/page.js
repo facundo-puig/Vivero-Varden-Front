@@ -1,69 +1,138 @@
-import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight, BookOpen, MessageCircle, Sprout } from "lucide-react";
+import { getCategorias, getProductosPagina } from "@/lib/api";
+import TarjetaCategoria from "@/components/TarjetaCategoria";
+import TarjetaProducto from "@/components/TarjetaProducto";
+import EstadoVacio from "@/components/EstadoVacio";
 
-export default function Home() {
+const BENEFICIOS = [
+  {
+    icono: Sprout,
+    titulo: "Información de cada especie",
+    texto:
+      "Familia, origen y forma de propagación de cada planta, para que sepas qué estás llevando.",
+  },
+  {
+    icono: BookOpen,
+    titulo: "Guías de cuidado",
+    texto:
+      "Riego, luz, temperatura y si es tóxica para tus mascotas, en el detalle de cada producto.",
+  },
+  {
+    icono: MessageCircle,
+    titulo: "Te ayudamos a elegir",
+    texto:
+      "Si te queda alguna duda, mirá las preguntas frecuentes o escribinos por WhatsApp.",
+  },
+];
+
+// Si la API falla, la home igual se muestra (sin esa sección) y el motivo queda en la terminal
+function avisarError(error) {
+  console.error("Inicio: no se pudo cargar de la API:", error.message);
+  return null;
+}
+
+export default async function PaginaInicio() {
+  const [categorias, datos] = await Promise.all([
+    getCategorias().catch(avisarError),
+    getProductosPagina({}).catch(avisarError),
+  ]);
+
+  const destacados = datos?.results.slice(0, 6) ?? [];
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.js
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <div className="space-y-16">
+      {/* Hero */}
+      <section className="rounded-3xl bg-brote p-8 md:p-14">
+        <div className="max-w-2xl">
+          <p className="text-xs font-semibold uppercase tracking-wide text-tierra">
+            Vivero Varden
           </p>
+          <h1 className="mt-3 font-titulos text-4xl font-semibold leading-tight text-hoja-oscuro md:text-5xl">
+            Llená tus espacios de vida natural
+          </h1>
+          <p className="mt-4 max-w-md text-tinta-suave">
+            Plantas, árboles, macetas, sustratos y todo lo que necesitás para
+            tu jardín, con la información para cuidarlos.
+          </p>
+
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Link
+              href="/productos"
+              className="flex items-center gap-2 rounded-lg bg-tierra px-5 py-2.5 text-sm font-medium text-white hover:bg-tierra-oscuro"
+            >
+              Ver productos
+              <ArrowRight size={16} />
+            </Link>
+            <Link
+              href="#categorias"
+              className="rounded-lg border border-hoja px-5 py-2.5 text-sm font-medium text-hoja hover:bg-white"
+            >
+              Explorar categorías
+            </Link>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      </section>
+
+      {/* Categorías */}
+      {categorias?.length > 0 && (
+        <section id="categorias" className="scroll-mt-8">
+          <h2 className="font-titulos text-2xl font-semibold text-hoja-oscuro">
+            Explorá nuestro catálogo
+          </h2>
+          <div className="mt-6 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6">
+            {categorias.map((categoria) => (
+              <TarjetaCategoria key={categoria.id} categoria={categoria} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Beneficios */}
+      <section className="grid gap-4 md:grid-cols-3">
+        {BENEFICIOS.map(({ icono: Icono, titulo, texto }) => (
+          <div key={titulo} className="rounded-xl border border-borde bg-white p-6">
+            <span className="flex size-11 items-center justify-center rounded-lg bg-brote text-hoja">
+              <Icono size={22} />
+            </span>
+            <h3 className="mt-4 font-titulos text-lg font-semibold text-hoja-oscuro">
+              {titulo}
+            </h3>
+            <p className="mt-2 text-sm text-tinta-suave">{texto}</p>
+          </div>
+        ))}
+      </section>
+
+      {/* Productos destacados */}
+      <section>
+        <div className="flex items-end justify-between gap-4">
+          <h2 className="font-titulos text-2xl font-semibold text-hoja-oscuro">
+            Productos destacados
+          </h2>
+          <Link
+            href="/productos"
+            className="flex items-center gap-1 text-sm font-medium text-hoja hover:underline"
           >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
+            Ver todo el catálogo
+            <ArrowRight size={16} />
+          </Link>
+        </div>
+
+        <div className="mt-6">
+          {destacados.length === 0 ? (
+            <EstadoVacio
+              titulo="No pudimos cargar los productos"
+              mensaje="Si la API estaba dormida, recargá la página en unos segundos."
             />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          ) : (
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {destacados.map((producto) => (
+                <TarjetaProducto key={producto.id} producto={producto} />
+              ))}
+            </div>
+          )}
         </div>
-      </main>
+      </section>
     </div>
   );
 }
