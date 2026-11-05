@@ -13,6 +13,7 @@ import { TAMANOS, formatearPrecio } from "@/lib/productos";
 import CuidadosEspecie from "@/components/CuidadosEspecie";
 import FormularioComentario from "@/components/FormularioComentario";
 import ListaComentarios from "@/components/ListaComentarios";
+import BotonWhatsapp from "@/components/BotonWhatsapp";
 
 export const metadata = { title: "Producto | Vivero Varden" };
 
@@ -71,6 +72,8 @@ export default async function PaginaDetalleProducto({ params }) {
                     </p>
 
                     {tamano && <p className="mt-1 text-sm text-tinta-suave">Tamaño: {tamano.etiqueta}</p>}
+
+                    <BotonWhatsapp producto={producto} />
 
                     {etiquetasProducto.length > 0 && (
                         <div className="mt-4 flex flex-wrap gap-2">
