@@ -12,6 +12,7 @@ export const ENDPOINTS = {
     productos: "/api/productos/",
     comentarios: "/api/comentarios/",
     login: "/api/auth/login/",
+    registro: "/api/auth/registro/",
     perfil: "/api/auth/perfil/",
 };
 
