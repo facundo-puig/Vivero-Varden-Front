@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema } from "@/app/validations/LoginSchema";
 import { login } from "@/app/actions";
+import Link from "next/link";
 
 export default function FormularioLogin() {
     const [estado, accion, pendiente] = useActionState(login, null);
@@ -79,6 +80,12 @@ export default function FormularioLogin() {
                     Si la API estaba dormida, puede tardar hasta un minuto.
                 </p>
             )}
+            <p className="text-center text-sm text-tinta-suave">
+                ¿No tenés cuenta?{" "}
+                <Link href="/registro" className="font-medium text-enlace hover:underline">
+                    Registrate
+                </Link>
+            </p>
         </form>
     );
 }
