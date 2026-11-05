@@ -2,6 +2,7 @@ import Link from "next/link";
 import { LayoutDashboard, LogOut, Search, User } from "lucide-react";
 import { getCategorias, getPerfil } from "@/lib/api";
 import { logout } from "@/app/actions";
+import BotonTema from "@/components/BotonTema";
 
 export default async function Navbar() {
     // Si la API no responde, el navbar igual se muestra (sin categorías)
@@ -16,14 +17,14 @@ export default async function Navbar() {
                 <div className="flex flex-wrap items-center gap-x-6 gap-y-3 py-4">
                     <Link
                         href="/"
-                        className="font-titulos text-2xl font-semibold text-hoja-oscuro"
+                        className="font-titulos text-2xl font-semibold text-titulo"
                     >
                         Vivero Varden
                     </Link>
 
                     <form
                         action="/productos"
-                        className="order-last flex w-full items-center gap-2 rounded-lg border border-borde bg-white px-3 py-2 md:order-none md:w-auto md:flex-1"
+                        className="order-last flex w-full items-center gap-2 rounded-lg border border-borde bg-superficie px-3 py-2 md:order-none md:w-auto md:flex-1"
                     >
                         <Search size={18} className="text-tinta-suave" />
                         <input
@@ -35,6 +36,7 @@ export default async function Navbar() {
                     </form>
 
                     <div className="ml-auto flex items-center gap-4 md:ml-0">
+                        <BotonTema />
                         {perfil ? (
                             <>
                                 {perfil.is_staff && (
@@ -49,7 +51,7 @@ export default async function Navbar() {
                                 <form action={logout}>
                                     <button
                                         type="submit"
-                                        className="flex items-center gap-2 text-sm font-medium text-tinta hover:text-hoja"
+                                        className="flex items-center gap-2 text-sm font-medium text-tinta hover:text-enlace"
                                     >
                                         <LogOut size={20} />
                                         <span className="hidden sm:inline">Cerrar sesión</span>
@@ -68,12 +70,12 @@ export default async function Navbar() {
                     </div>
                 </div>
 
-                <nav className="flex gap-6 overflow-x-auto pb-3 text-sm font-medium text-hoja">
+                <nav className="flex gap-6 overflow-x-auto pb-3 text-sm font-medium text-enlace">
                     {categorias.map((categoria) => (
                         <Link
                             key={categoria.id}
                             href={`/productos?categoria=${categoria.id}`}
-                            className="whitespace-nowrap hover:text-hoja-oscuro hover:underline"
+                            className="whitespace-nowrap hover:text-titulo hover:underline"
                         >
                             {categoria.nombre}
                         </Link>
