@@ -33,7 +33,7 @@ export default async function PaginaCatalogo({ searchParams }) {
 
     return (
         <section>
-            <h1 className="font-titulos text-3xl font-semibold text-hoja-oscuro">
+            <h1 className="font-titulos text-3xl font-semibold text-titulo">
                 Nuestra colección
             </h1>
             <p className="mt-1 text-sm text-tinta-suave">

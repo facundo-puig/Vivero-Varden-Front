@@ -12,10 +12,10 @@ export default async function LayoutDashboard({ children }) {
     return (
         <div>
             <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-borde pb-4">
-                <h1 className="font-titulos text-2xl font-semibold text-hoja-oscuro">
+                <h1 className="font-titulos text-2xl font-semibold text-titulo">
                     Panel de administración
                 </h1>
-                <nav className="flex gap-4 text-sm font-medium text-hoja">
+                <nav className="flex gap-4 text-sm font-medium text-enlace">
                     <Link href="/dashboard" className="hover:underline">
                         Resumen
                     </Link>

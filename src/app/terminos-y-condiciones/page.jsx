@@ -43,7 +43,7 @@ export default function PaginaTerminos() {
         >
             {SECCIONES.map((seccion) => (
                 <section key={seccion.titulo}>
-                    <h2 className="font-semibold text-hoja-oscuro">{seccion.titulo}</h2>
+                    <h2 className="font-semibold text-titulo">{seccion.titulo}</h2>
                     <p className="mt-1 text-sm text-tinta-suave">{seccion.texto}</p>
                 </section>
             ))}
