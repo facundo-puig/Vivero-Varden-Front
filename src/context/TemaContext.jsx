@@ -9,6 +9,8 @@ export function TemaProvider({ children }) {
 
     // Al cargar, recupera el tema que el usuario eligió la última vez
     useEffect(() => {
+        // localStorage solo existe en el navegador, por eso se lee en un efecto
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         if (localStorage.getItem("tema") === "oscuro") setTema("oscuro");
     }, []);
 
